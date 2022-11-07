@@ -27,9 +27,15 @@
     <ClInclude Include="Source\Vox\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Vox\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Vox\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vox\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
