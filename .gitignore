@@ -4,14 +4,16 @@ bin/
 bin-int/
 out/
 
-# User Files
+# Potential Visual Studio Stuff
 *.rsuser
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-
-# Files built by Visual Studio
+*.sln
+*.userprefs
+*.vcxproj
+*.vcxproj.filters
 *_i.c
 *_p.c
 *_h.h
