@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 3.8)
 # Set Project Settings
 project(VoxEngine)
 
+# Set the binary folder
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${Vox_BINARY_DIR}/bin)
 
 # Add List of Static File
 # SHOULD CHANGE FROM GLOB.

@@ -2,13 +2,16 @@
 cmake_minimum_required(VERSION 3.8)
 
 # Set Project Settings
-project(VoxDevEnv)
+project(Vox)
 
 # Add Components
 add_subdirectory(Vox)
 add_subdirectory(Sandbox)
 
 add_subdirectory(Vox/External/spdlog)
+
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
 # USE_FOLDERS group cmake generated projects into one (CMakePredefinedTargets) folder
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
