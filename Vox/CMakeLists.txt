@@ -6,6 +6,7 @@ project(VoxEngine)
 
 
 # Add List of Static File
+# SHOULD CHANGE FROM GLOB.
 file(GLOB_RECURSE VoxEngineSources "Source/**.cpp" "Source/**.h")
 add_library(VoxEngine SHARED ${VoxEngineSources})
 
@@ -23,16 +24,7 @@ list(APPEND VoxCompDefs
 
 target_compile_definitions(VoxEngine PRIVATE ${VoxCompDefs})
 
-add_custom_command(
-	TARGET VoxEngine
-	POST_BUILD
-	COMMAND ${CMAKE_COMMAND} -E copy_if_different
-	"${PROJECT_BINARY_DIR}/Vox/Vox.dll"
-	"${PROJECT_BINARY_DIR}/Sandbox"
-)
+# Pre Compiled Headers
+set(HEADER_FILES Source/pch.h)
+target_precompile_headers(VoxEngine PRIVATE ${HEADER_FILES})
 
-
-
-# Installs
-#install(TARGETS VoxEngine DESTINATION bin)
-#install(FILES Source/Vox.h DESTINATION lib)

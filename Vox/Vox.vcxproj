@@ -11,13 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Vox\Events\Event.h" />
+    <ClInclude Include="Source\Vox\Events\EventDispatcher.h" />
+    <ClInclude Include="Source\Vox\Events\KeyEvents.h" />
+    <ClInclude Include="Source\Vox\Events\MouseEvents.h" />
+    <ClInclude Include="Source\Vox\Events\WindowEvents.h" />
     <ClInclude Include="Source\Vox\Log.h" />
     <ClInclude Include="Source\Vox.h" />
     <ClInclude Include="Source\Vox\Application.h" />
     <ClInclude Include="Source\Vox\Core.h" />
     <ClInclude Include="Source\Vox\EntryPoint.h" />
+    <ClInclude Include="Source\pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\pch.cpp" />
     <ClCompile Include="Source\Vox\Log.cpp" />
     <ClCompile Include="Source\Vox\Application.cpp" />
   </ItemGroup>
@@ -70,7 +77,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>VX_PLATFORM_WINDOWS;VX_BUILD_DLL;  _DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vox\External\spdlog\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vox\External\spdlog\include;$(SolutionDir)Vox\Source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -85,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>VX_PLATFORM_WINDOWS;VX_BUILD_DLL;  NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vox\External\spdlog\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vox\External\spdlog\include;$(SolutionDir)Vox\Source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
