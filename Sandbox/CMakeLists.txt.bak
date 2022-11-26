@@ -18,11 +18,11 @@ target_link_libraries(VoxSandbox
 )
 
 
-# Copy DLL -- No need to copy - building everything into the vox binary folder
-# add_custom_command(
-# 	TARGET VoxSandbox
-# 	POST_BUILD
-# 	COMMAND ${CMAKE_COMMAND} -E copy_if_different
-# 	"${VoxEngine_BINARY_DIR}/VoxEngine.dll"
-# 	"${VoxSandbox_BINARY_DIR}/VoxEngine.dll"
-# )
+# Copy DLL
+add_custom_command(
+	TARGET VoxSandbox
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy_if_different
+	"${VoxEngine_BINARY_DIR}/VoxEngine.dll"
+	"${VoxSandbox_BINARY_DIR}/VoxEngine.dll"
+)
