@@ -17,6 +17,9 @@ target_include_directories(VoxEngine PUBLIC ${PROJECT_SOURCE_DIR}/Source)
 
 # Libraries
 target_link_libraries(VoxEngine spdlog)
+target_link_libraries(VoxEngine glm)
+target_link_libraries(VoxEngine glfw)
+target_link_libraries(VoxEngine glad)
 
 # Add compile definitions
 list(APPEND VoxCompDefs

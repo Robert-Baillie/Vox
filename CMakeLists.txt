@@ -9,6 +9,9 @@ add_subdirectory(Vox)
 add_subdirectory(Sandbox)
 
 add_subdirectory(Vox/External/spdlog)
+add_subdirectory(Vox/External/glm)
+add_subdirectory(Vox/External/glfw)
+add_subdirectory(Vox/External/glad)
 
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)

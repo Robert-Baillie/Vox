@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-
-
 namespace Vox
 {
 
@@ -13,6 +11,12 @@ namespace Vox
 	template <typename T>
 	class EventDispatcher
 	{
+	private:
+		// Define a type Event Callback Fucnction  which returns a bool (will set the handled) the event of type T will be passed as a reference
+		// dont need to use this to define - this is simply any fucntion that returns a bool and takes in an event reference
+		using EventCallbackFn = std::function<bool(const Event<T>&)>;
+		std::map<T, std::vector<EventCallbackFn>> observers;
+
 	public:
 		// Subscribe to an event - add the type in the map to the observers
 		void Subscribe(T type, const EventCallbackFn& func)
@@ -39,11 +43,7 @@ namespace Vox
 		}
 
 
-	private:
-		// Define a type Event Callback Fucnction  which returns a bool (will set the handled) the event of type T will be passed as a reference
-		// dont need to use this to define - this is simply any fucntion that returns a bool and takes in an event reference
-		using EventCallbackFn = std::function<bool(const Event<T>&)>;
-		std::map<T, std::vector<EventCallbackFn>> observers;
+	
 
 	};
 }

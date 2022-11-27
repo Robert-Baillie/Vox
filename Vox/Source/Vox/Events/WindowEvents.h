@@ -29,11 +29,11 @@ namespace Vox
 
 
 	/// WINDOW CLOSE EVENT- 
-	class WindowResizeEvent : public Event<WindowEvents>
+	class WindowClosedEvent : public Event<WindowEvents>
 	{
 	public:
 		// Constructor - construct event
-		WindowResizeEvent() : Event<WindowEvents>(WindowEvents::WindowClosed, "WindowClosed"){}
+		WindowClosedEvent() : Event<WindowEvents>(WindowEvents::WindowClosed, "WindowClosed"){}
 			
 	};
 }
