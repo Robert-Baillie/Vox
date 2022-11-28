@@ -24,8 +24,9 @@
 #include "Vox/Log.h"
 
 // Engine Includes
-#include "glad/glad.h"
-#include "GLFW/glfw3.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 
 // Events
 #include "Vox/Events/Event.h"
@@ -35,6 +36,3 @@
 #include "Vox/Events/WindowEvents.h"
 
 // OTHERS - Maths, Physics, VoxEngine Types i.e: VXuint, VXbool etc...
-
-
-// Macros

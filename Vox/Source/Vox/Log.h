@@ -29,7 +29,6 @@ namespace Vox {
 #define VX_CORE_INFO(...)  ::Vox::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define VX_CORE_WARN(...)  ::Vox::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define VX_CORE_ERROR(...) ::Vox::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define VX_CORE_FATAL(...) ::Vox::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
 // Core Log Macros
 // Define error (...) passing in undetermined variables. When we do we want to call the core logger __VA_ARGS__ passing in the (...) from before
@@ -37,4 +36,3 @@ namespace Vox {
 #define VX_INFO(...)  ::Vox::Log::GetClientLogger()->info(__VA_ARGS__)
 #define VX_WARN(...)  ::Vox::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define VX_ERROR(...) ::Vox::Log::GetClientLogger()->error(__VA_ARGS__)
-#define VX_FATAL(...) ::Vox::Log::GetClientLogger()->fatal(__VA_ARGS__)

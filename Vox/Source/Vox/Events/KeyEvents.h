@@ -7,7 +7,8 @@ namespace Vox
 	enum class KeyEvents
 	{
 		KeyPressed,
-		KeyReleased
+		KeyReleased,
+		KeyRepeat
 	};
 
 
@@ -45,4 +46,6 @@ namespace Vox
 	private:
 		int keyCode;
 	};
+
+	
 }

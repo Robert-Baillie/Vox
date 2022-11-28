@@ -7,6 +7,7 @@ project(Vox)
 # Add Components
 add_subdirectory(Vox)
 add_subdirectory(Sandbox)
+#include <glad/glad.h>
 
 add_subdirectory(Vox/External/spdlog)
 add_subdirectory(Vox/External/glm)
