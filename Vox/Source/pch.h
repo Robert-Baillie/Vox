@@ -20,13 +20,14 @@
 #endif
 
 
-// Defined Includes
-#include "Vox/Log.h"
 
 // Engine Includes
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+// Defined Includes
+#include "Vox/Log.h"
+#include "Vox/Window.h"
 
 // Events
 #include "Vox/Events/Event.h"

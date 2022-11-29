@@ -3,7 +3,7 @@
 class Sandbox : public Vox::Application
 {
 public:
-	Sandbox()
+	Sandbox() 
 	{
 
 	}

@@ -20,11 +20,11 @@ namespace Vox
 		void Initialise();
 
 		// Uitility Functions
-		GLint GetBufferWidth() { return bufferWidth; }
-		GLint GetBufferHeight() { return bufferHeight; }
+		GLint GetBufferWidth(){ return bufferWidth; }
+		GLint GetBufferHeight(){ return bufferHeight; }
 
-		void SetWindowDimension(GLint x, GLint y) { width = x; height = y; }
-		void SetBufferDimensios(GLint x, GLint y) { bufferWidth = x; bufferHeight = y; }
+		void SetWindowDimension(GLint x, GLint y){ width = x; height = y; }
+		void SetBufferDimensios(GLint x, GLint y){ bufferWidth = x; bufferHeight = y; }
 
 		bool GetShouldClose() { return glfwWindowShouldClose(window); }
 

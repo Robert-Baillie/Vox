@@ -10,7 +10,10 @@ namespace Vox{
 	void mouseScrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 	void mousePosCallback(GLFWwindow* window, double xpos, double ypos);
 
-	Window::Window(GLint windowWidth, GLint windowHeight) : width(windowWidth), height(windowHeight) {}
+	Window::Window(GLint windowWidth, GLint windowHeight) {
+		width = windowWidth;
+		height = windowHeight;
+	}
 
 	Window::~Window()
 	{
@@ -21,6 +24,8 @@ namespace Vox{
 
 	void Window::Initialise()
 	{
+		
+
 		// Initialise GLFW - print errors
 		if (!glfwInit())
 		{
@@ -84,17 +89,18 @@ namespace Vox{
 
 		// Assign the user pointer
 		glfwSetWindowUserPointer(window, this);
+
 	}
 
 	/* CALLBACK FUNCTIONS*/
-	
 
 	// Window
 	void windowSizeCallback(GLFWwindow* window, int width, int height)
 	{
+
 		// Assign the main window
-		Window mainWindow = *(Window*)glfwGetWindowUserPointer(window);
-		mainWindow.SetWindowDimension(width, height);
+		Window* mainWindow = (Window*)glfwGetWindowUserPointer(window);
+		mainWindow->SetWindowDimension(width, height); // CALLING THIS CRASHES
 
 		// Dispatch event to subscribers
 		WindowResizeEvent event(width, height);

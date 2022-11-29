@@ -5,7 +5,7 @@
 namespace Vox
 {
 
-	// Event dispatcher holds a map of events to callback functions 
+	// Event dispatcher holds a map of events of certain types to callback functions 
 	// This map is populated via subscriptions
 	// Subscribe via example like dispatcher.Subscribe(EventType::EVENT, std::bind(&Observer::HandleFunction, Observer, std::placehoilders::_1))
 	template <typename T>
@@ -28,6 +28,7 @@ namespace Vox
 		// Dispatch an event
 		void Dispatch(Event<T>& event)
 		{
+			VX_CORE_INFO("Dispatching Event {0}", event.getName());
 			// If we do not find the event (map.end gives a theoretical element past the map)
 			if (observers.find(event.getType()) == observers.end())
 				return;
