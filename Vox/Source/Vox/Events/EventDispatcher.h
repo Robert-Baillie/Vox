@@ -7,7 +7,7 @@ namespace Vox
 
 	// Event dispatcher holds a map of events of certain types to callback functions 
 	// This map is populated via subscriptions
-	// Subscribe via example like dispatcher.Subscribe(EventType::EVENT, std::bind(&Observer::HandleFunction, Observer, std::placehoilders::_1))
+	// Subscribe via example like dispatcher.Subscribe(EventType::EVENT, std::bind(&Observer::HandleFunction, Observer, std::placeholders::_1))
 	template <typename T>
 	class EventDispatcher
 	{

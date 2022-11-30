@@ -27,4 +27,27 @@ namespace Vox
 		T type;
 		std::string name;
 	};
+
+	enum class VoxEvents
+	{
+		None,
+
+		// Key
+		KeyPressed,
+		KeyReleased,
+		KeyRepeat,
+
+		// Mouse
+		MouseMoved,
+		MouseScrolled,
+		MouseButtonPressed,
+		MouseButtonReleased,
+
+		// Windows
+		WindowResize,
+		WindowClosed
+	};
+
+
+
 }

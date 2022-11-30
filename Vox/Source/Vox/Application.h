@@ -13,10 +13,24 @@ namespace Vox {
 
 		void Run();
 
+		// Event Dispatchers
+		EventDispatcher<VoxEvents> VoxEventDispatcher;
+
+		// Utility
+		Window& GetWindow() { return *mainWindow; }
+		static Application& GetApplication() { return *instance; }
+
+		// TEST
+		bool OnEvent(const Event<VoxEvents>& e);
+
 	private:
+		// Window Pointer
 		Window* mainWindow;
 
+		// Singleton
 		static Application* instance;
+
+
 	};
 
 	// To be defined in the game application

@@ -4,19 +4,13 @@
 
 namespace Vox
 {
-	enum class WindowEvents
-	{
-		WindowResize,
-		WindowClosed
-	};
-
 
 	/// WINDOW RESIZE EVENT- Holds utility function for resive
-	class WindowResizeEvent : public Event<WindowEvents>
+	class WindowResizeEvent : public Event<VoxEvents>
 	{
 	public:
 		// Constructor - assign the new height and construct event
-		WindowResizeEvent(unsigned int x, unsigned int y) : Event<WindowEvents>(WindowEvents::WindowResize, "WindowResize"), width(x), height(y) {}
+		WindowResizeEvent(unsigned int x, unsigned int y) : Event<VoxEvents>(VoxEvents::WindowResize, "WindowResize"), width(x), height(y) {}
 
 
 		// Get the Height and Width
@@ -29,11 +23,11 @@ namespace Vox
 
 
 	/// WINDOW CLOSE EVENT- 
-	class WindowClosedEvent : public Event<WindowEvents>
+	class WindowClosedEvent : public Event<VoxEvents>
 	{
 	public:
 		// Constructor - construct event
-		WindowClosedEvent() : Event<WindowEvents>(WindowEvents::WindowClosed, "WindowClosed"){}
+		WindowClosedEvent() : Event<VoxEvents>(VoxEvents::WindowClosed, "WindowClosed"){}
 			
 	};
 }

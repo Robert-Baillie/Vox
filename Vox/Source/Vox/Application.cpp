@@ -17,7 +17,15 @@ namespace Vox {
 		mainWindow->Initialise();
 		VX_CORE_INFO("Window Initialisation Complete");
 
+		VoxEventDispatcher.Subscribe(VoxEvents::KeyPressed, std::bind(&Application::OnEvent, this, std::placeholders::_1));
 
+	}
+
+	// TEST
+	bool Application::OnEvent(const Event<VoxEvents>& e)
+	{
+		VX_CORE_INFO("WILL IT WORK");
+		return true;
 	}
 
 	Application::~Application()

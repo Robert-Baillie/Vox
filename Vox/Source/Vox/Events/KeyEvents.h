@@ -4,20 +4,14 @@
 
 namespace Vox
 {
-	enum class KeyEvents
-	{
-		KeyPressed,
-		KeyReleased,
-		KeyRepeat
-	};
-
+	
 
 	/// KEY PRESSED EVENT - Holds utility function for repeat and the code that is being used 
-	class KeyPressedEvent : public Event<KeyEvents>
+	class KeyPressedEvent : public Event<VoxEvents>
 	{
 		public:
 			// Constructor - assign the keycode and assign the event type constrctor
-			KeyPressedEvent(const int keyCode, bool isRepeat = false) : Event<KeyEvents>(KeyEvents::KeyPressed, "KeyPressed"), keyCode(keyCode), isRepeat(isRepeat) {}
+			KeyPressedEvent(const int keyCode, bool isRepeat = false) : Event<VoxEvents>(VoxEvents::KeyPressed, "KeyPressed"), keyCode(keyCode), isRepeat(isRepeat) {}
 
 
 			// Ket the keycode pressed - TO CHANGE FROM INT TO A UNNIVERSAL KEYCODE CLASS
@@ -32,11 +26,11 @@ namespace Vox
 	};
 
 	/// KEY RELEASED EVENT - Holds Utility Funtion holding the key released
-	class KeyReleasedEvent : public Event<KeyEvents>
+	class KeyReleasedEvent : public Event<VoxEvents>
 	{
 	public:
 		// Constructor - assign the keycode and assign the event type constrctor
-		KeyReleasedEvent(const int keyCode) : Event<KeyEvents>(KeyEvents::KeyReleased, "KeyReleased"), keyCode(keyCode) {}
+		KeyReleasedEvent(const int keyCode) : Event<VoxEvents>(VoxEvents::KeyReleased, "KeyReleased"), keyCode(keyCode) {}
 
 
 		// Ket the keycode released - TO CHANGE FROM INT TO A UNNIVERSAL KEYCODE CLASS

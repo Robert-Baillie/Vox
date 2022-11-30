@@ -1,5 +1,7 @@
 #include "Window.h"
 
+#include "Application.h"	
+
 namespace Vox{
 	// Declarations
 	void windowSizeCallback(GLFWwindow* window, int width, int height);
@@ -104,7 +106,8 @@ namespace Vox{
 
 		// Dispatch event to subscribers
 		WindowResizeEvent event(width, height);
-		Vox::EventDispatcher<WindowEvents>().Dispatch(event);
+		Application::GetApplication().VoxEventDispatcher.Dispatch(event);
+		//Vox::EventDispatcher<VoxEvents>().Dispatch(event);
 
 	}
 
@@ -112,7 +115,8 @@ namespace Vox{
 	{
 		// Dispatch event to subscribers
 		WindowClosedEvent event;
-		Vox::EventDispatcher<WindowEvents>().Dispatch(event);
+		Application::GetApplication().VoxEventDispatcher.Dispatch(event);
+		//Vox::EventDispatcher<VoxEvents>().Dispatch(event);
 	}
 
 	void framebufferSizeCallback(GLFWwindow* window, int width, int height)
@@ -130,21 +134,24 @@ namespace Vox{
 		if (action == GLFW_PRESS)
 		{
 			KeyPressedEvent event(key, 0);
-			Vox::EventDispatcher<KeyEvents>().Dispatch(event);
+			Application::GetApplication().VoxEventDispatcher.Dispatch(event);
+			//Vox::EventDispatcher<VoxEvents>().Dispatch(event);
 			return;
 		} 
 
 		else if (action == GLFW_RELEASE)
 		{
 			KeyReleasedEvent event(key);
-			Vox::EventDispatcher<KeyEvents>().Dispatch(event);
+			Application::GetApplication().VoxEventDispatcher.Dispatch(event);
+			//Vox::EventDispatcher<VoxEvents>().Dispatch(event);
 			return;
 		}
 
 		else if (action == GLFW_REPEAT)
 		{
 			KeyPressedEvent event(key, 1);
-			Vox::EventDispatcher<KeyEvents>().Dispatch(event);
+			Application::GetApplication().VoxEventDispatcher.Dispatch(event);
+			//Vox::EventDispatcher<VoxEvents>().Dispatch(event);
 			return;
 		}
 	}
@@ -155,14 +162,16 @@ namespace Vox{
 		if (action == GLFW_PRESS)
 		{
 			MouseButtonPressedEvent event(button);
-			Vox::EventDispatcher<MouseEvents>().Dispatch(event);
+			Application::GetApplication().VoxEventDispatcher.Dispatch(event);
+			//Vox::EventDispatcher<VoxEvents>().Dispatch(event);
 			return;
 		}
 
 		else if (action == GLFW_RELEASE)
 		{
 			MouseButtonReleasedEvent event(button);
-			Vox::EventDispatcher<MouseEvents>().Dispatch(event);
+			Application::GetApplication().VoxEventDispatcher.Dispatch(event);
+			//Vox::EventDispatcher<VoxEvents>().Dispatch(event);
 			return;
 		}
 	}
@@ -170,12 +179,14 @@ namespace Vox{
 	void mouseScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 	{
 		MouseScrolledEvent event((float)xoffset, (float)yoffset);
-		Vox::EventDispatcher<MouseEvents>().Dispatch(event);
+		Application::GetApplication().VoxEventDispatcher.Dispatch(event);
+		//Vox::EventDispatcher<VoxEvents>().Dispatch(event);
 	}
 
 	void mousePosCallback(GLFWwindow* window, double xpos, double ypos)
 	{
 		MouseMovedEvent event((float)xpos, (float)ypos);
-		Vox::EventDispatcher<MouseEvents>().Dispatch(event);
+		Application::GetApplication().VoxEventDispatcher.Dispatch(event);
+		//Vox::EventDispatcher<VoxEvents>().Dispatch(event);
 	}
 }

@@ -1,6 +1,7 @@
 #pragma once
-
 #include "pch.h"
+
+
 namespace Vox
 {
 
@@ -16,7 +17,7 @@ namespace Vox
 		~Window();
 
 		// Initialise - Handles GLFW Set Up - GLEW/GLAD will need to be initialised too.
-		// Callback events held in nApplication
+		// Callback events held in Application
 		void Initialise();
 
 		// Uitility Functions
