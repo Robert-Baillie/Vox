@@ -5,6 +5,7 @@
 
 #include "Vox/Application.h"
 #include "Vox/Log.h"
+#include "Vox/Input.h"
 
 /*ENTRY POINT*/
 #include "Vox/EntryPoint.h"

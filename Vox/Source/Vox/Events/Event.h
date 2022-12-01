@@ -19,11 +19,11 @@ namespace Vox
 		bool IsHandled = false;
 
 		// Utility functions to get name, type 
-		inline const T getType() { return type; };
-		inline const std::string getName() { return name; };
+		inline const T getType() const { return type; };
+		inline const std::string getName() const { return name; };
 
 
-	private:
+	protected:
 		T type;
 		std::string name;
 	};

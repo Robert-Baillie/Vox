@@ -20,12 +20,13 @@ namespace Vox {
 		Window& GetWindow() { return *mainWindow; }
 		static Application& GetApplication() { return *instance; }
 
-		// TEST
-		bool OnEvent(const Event<VoxEvents>& e);
+
+		virtual void OnUpdate();
 
 	private:
 		// Window Pointer
 		Window* mainWindow;
+
 
 		// Singleton
 		static Application* instance;

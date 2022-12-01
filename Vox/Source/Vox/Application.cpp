@@ -2,6 +2,7 @@
 #include "Application.h"
 #include <stdio.h>
 #include <iostream>
+
 namespace Vox {
 	Application* Application::instance = nullptr;
 
@@ -17,15 +18,14 @@ namespace Vox {
 		mainWindow->Initialise();
 		VX_CORE_INFO("Window Initialisation Complete");
 
-		VoxEventDispatcher.Subscribe(VoxEvents::KeyPressed, std::bind(&Application::OnEvent, this, std::placeholders::_1));
+		// Initilise Input
+		Input input;
+		input.Initialise();
 
-	}
 
-	// TEST
-	bool Application::OnEvent(const Event<VoxEvents>& e)
-	{
-		VX_CORE_INFO("WILL IT WORK");
-		return true;
+
+		
+
 	}
 
 	Application::~Application()
@@ -46,6 +46,14 @@ namespace Vox {
 
 
 			mainWindow->SwapBuffers();
+
+			OnUpdate();
 		}
+	}
+
+
+	void Application::OnUpdate()
+	{
+
 	}
 }

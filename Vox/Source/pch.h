@@ -28,6 +28,7 @@
 // Defined Includes
 #include "Vox/Log.h"
 #include "Vox/Window.h"
+#include "Vox/Input.h"
 
 // Events
 #include "Vox/Events/Event.h"
