@@ -11,11 +11,7 @@ namespace Vox {
 	{
 	public:
 		// API Functions
-		static bool IsKeyPressed(int key)
-		{
-			return false;
-		}
-
+		static bool IsKeyPressed(const int key);
 
 	private:
 		// Initialise - assign the keys bools and subscribe to events;
@@ -27,12 +23,14 @@ namespace Vox {
 
 
 		// Callback functions to handle key assignment
-		bool OnKeyPressed(const Event<VoxEvents>& event);
+		bool OnKeyPressed(Event<VoxEvents>& event);
+		bool OnKeyReleased(Event<VoxEvents>& event);
 
 		// Friend class - let app access these private functions
 		friend class Application;
 
-		private:
+		// Singleton
+		static Input* instance;
 
 	};
 

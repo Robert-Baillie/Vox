@@ -19,12 +19,10 @@ namespace Vox {
 		VX_CORE_INFO("Window Initialisation Complete");
 
 		// Initilise Input
-		Input input;
-		input.Initialise();
+		input = new Input;
+		input->Initialise();
 
-
-
-		
+	
 
 	}
 
@@ -51,9 +49,8 @@ namespace Vox {
 		}
 	}
 
-
 	void Application::OnUpdate()
 	{
-
+		
 	}
 }

@@ -15,7 +15,11 @@ public:
 
 	void OnUpdate()
 	{
-		
+		if (Vox::Input::IsKeyPressed(65) == true || Vox::Input::IsKeyPressed(64) == true)
+		{
+			VX_TRACE("A KEY PRESSED");
+		}
+
 	}
 
 };

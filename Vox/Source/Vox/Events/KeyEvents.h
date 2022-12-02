@@ -7,7 +7,7 @@ namespace Vox
 	
 
 	/// KEY PRESSED EVENT - Holds utility function for repeat and the code that is being used 
-	class KeyPressedEvent : public Event<VoxEvents>
+	class KeyPressedEvent : public virtual Event<VoxEvents>
 	{
 		public:
 			// Constructor - assign the keycode and assign the event type constrctor

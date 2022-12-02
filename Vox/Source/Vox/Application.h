@@ -26,7 +26,7 @@ namespace Vox {
 	private:
 		// Window Pointer
 		Window* mainWindow;
-
+		Input* input;
 
 		// Singleton
 		static Application* instance;

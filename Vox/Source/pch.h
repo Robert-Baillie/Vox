@@ -28,7 +28,6 @@
 // Defined Includes
 #include "Vox/Log.h"
 #include "Vox/Window.h"
-#include "Vox/Input.h"
 
 // Events
 #include "Vox/Events/Event.h"
@@ -36,5 +35,8 @@
 #include "Vox/Events/KeyEvents.h"
 #include "Vox/Events/MouseEvents.h"
 #include "Vox/Events/WindowEvents.h"
+
+#include "Vox/Input.h"
+
 
 // OTHERS - Maths, Physics, VoxEngine Types i.e: VXuint, VXbool etc...

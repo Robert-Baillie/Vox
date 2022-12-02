@@ -2,6 +2,25 @@
 
 namespace Vox
 {
+	enum class VoxEvents
+	{
+		None,
+
+		// Key
+		KeyPressed,
+		KeyReleased,
+		KeyRepeat,
+
+		// Mouse
+		MouseMoved,
+		MouseScrolled,
+		MouseButtonPressed,
+		MouseButtonReleased,
+
+		// Windows
+		WindowResize,
+		WindowClosed
+	};
 
 	// Class that holds the bease construction for an event
 	// Events must inherit from this class
@@ -28,25 +47,7 @@ namespace Vox
 		std::string name;
 	};
 
-	enum class VoxEvents
-	{
-		None,
-
-		// Key
-		KeyPressed,
-		KeyReleased,
-		KeyRepeat,
-
-		// Mouse
-		MouseMoved,
-		MouseScrolled,
-		MouseButtonPressed,
-		MouseButtonReleased,
-
-		// Windows
-		WindowResize,
-		WindowClosed
-	};
+	
 
 
 
