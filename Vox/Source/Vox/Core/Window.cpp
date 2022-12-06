@@ -1,6 +1,5 @@
 #include "Window.h"
-
-#include "Application.h"	
+#include "Application.h"
 
 namespace Vox{
 	// Declarations
@@ -41,6 +40,8 @@ namespace Vox{
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); // Set Minor Version to 3
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // No backwards compatability
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // Allow Forward Compatiblity
+		
+		 glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_FALSE); // Frame limiter - disable to test
 
 		// Create Window and return any errors
 		window = glfwCreateWindow(width, height, "Vox Engine", NULL, NULL);

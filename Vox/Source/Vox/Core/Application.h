@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Core.h"
-#include "pch.h"
+#include "Window.h"
+#include "Input.h"
 
 namespace Vox {
 
@@ -21,16 +21,22 @@ namespace Vox {
 		static Application& GetApplication() { return *instance; }
 
 
-		virtual void OnUpdate();
 
 	private:
 		// Window Pointer
 		Window* mainWindow;
 		Input* input;
 
+		// ECS
+
 		// Singleton
 		static Application* instance;
 
+		// Helpers
+		// FPS
+		void printFrameCount();
+		double lastTime;
+		int nbFrames;
 
 	};
 

@@ -12,11 +12,12 @@
 //#include <sstream>
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
+#include <set>
 
 // Platform Includes
 #ifdef VX_PLATFORM_WINDOWS
-	#include <Windows.h>
+#include <Windows.h>
 #endif
 
 
@@ -24,10 +25,11 @@
 // Engine Includes
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 // Defined Includes
-#include "Vox/Log.h"
-#include "Vox/Window.h"
+#include "Vox/Core/Log.h"
+#include "Vox/Core/Window.h"
 
 // Events
 #include "Vox/Events/Event.h"
@@ -36,7 +38,9 @@
 #include "Vox/Events/MouseEvents.h"
 #include "Vox/Events/WindowEvents.h"
 
-#include "Vox/Input.h"
+#include "Vox/Core/KeyCodes.h"
+#include "Vox/Core/MouseCodes.h"
+#include "Vox/Core/Input.h"
 
 
 // OTHERS - Maths, Physics, VoxEngine Types i.e: VXuint, VXbool etc...

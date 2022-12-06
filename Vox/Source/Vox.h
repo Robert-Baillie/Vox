@@ -3,10 +3,13 @@
 /// Header file only intended to be included by external application
 /// Never used inside Vox Engine
 
-#include "Vox/Application.h"
-#include "Vox/Log.h"
-#include "Vox/Input.h"
+#include "Vox/Core/Application.h"
+#include "Vox/Core/Log.h"
+
+#include "Vox/Core/KeyCodes.h"
+#include "Vox/Core/MouseCodes.h"
+#include "Vox/Core/Input.h"
 
 /*ENTRY POINT*/
-#include "Vox/EntryPoint.h"
+#include "Vox/Core/EntryPoint.h"
 /*------------*/

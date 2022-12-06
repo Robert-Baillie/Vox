@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Event.h"
+#include "Vox/Core/MouseCodes.h"
 
 namespace Vox
 {
@@ -49,15 +50,15 @@ namespace Vox
 	{
 	public:
 		// Constructor - assign the mouse code and construct event
-		MouseButtonPressedEvent(int but) : Event<VoxEvents>(VoxEvents::MouseButtonPressed, "MouseButtonPressed"), buttonPressed(but) {}
+		MouseButtonPressedEvent(MouseCode but) : Event<VoxEvents>(VoxEvents::MouseButtonPressed, "MouseButtonPressed"), buttonPressed(but) {}
 
 
 		// Get Mouse Button Pressed - CHANGE FROM INT TO MOUSE CLASS
-		float GetMousePressed() const { return buttonPressed; }
+		MouseCode GetMousePressed() const { return buttonPressed; }
 
 
 	private:
-		int buttonPressed;
+		MouseCode buttonPressed;
 	};
 
 	/// MOUSE BUTTON RELESED EVENT - Holds the mouse button released
@@ -65,15 +66,15 @@ namespace Vox
 	{
 	public:
 		// Constructor - assign the mouse code and construct event
-		MouseButtonReleasedEvent(int but) : Event<VoxEvents>(VoxEvents::MouseButtonReleased, "MouseButtonReleased"), buttonReleased(but) {}
+		MouseButtonReleasedEvent(MouseCode but) : Event<VoxEvents>(VoxEvents::MouseButtonReleased, "MouseButtonReleased"), buttonReleased(but) {}
 
 
 		// Get Mouse Button Released - CHANGE FROM INT TO MOUSE CLASS
-		float GetMouseReleased() const { return buttonReleased; }
+		MouseCode GetMouseReleased() const { return buttonReleased; }
 
 
 	private:
-		int buttonReleased;
+		MouseCode buttonReleased;
 	};
 
 

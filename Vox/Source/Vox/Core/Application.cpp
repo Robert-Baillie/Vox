@@ -1,7 +1,5 @@
-
 #include "Application.h"
-#include <stdio.h>
-#include <iostream>
+
 
 namespace Vox {
 	Application* Application::instance = nullptr;
@@ -23,6 +21,7 @@ namespace Vox {
 		input->Initialise();
 
 	
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 	}
 
@@ -32,8 +31,14 @@ namespace Vox {
 	}
 
 
+
 	void Application::Run()
 	{
+		// Get Frames
+		lastTime = glfwGetTime();
+		nbFrames = 0;
+
+
 		while (!mainWindow->GetShouldClose())
 		{
 			// Get user inputs
@@ -45,12 +50,27 @@ namespace Vox {
 
 			mainWindow->SwapBuffers();
 
-			OnUpdate();
+			printFrameCount();
+			
 		}
 	}
 
-	void Application::OnUpdate()
+
+	
+
+	void Application::printFrameCount()
 	{
-		
+		// Measure speed
+		double currentTime = glfwGetTime();
+		nbFrames++;
+		if (currentTime - lastTime >= 1.0) { // If last prinf() was more than 1 sec ago
+			// printf and reset timer
+			VX_CORE_TRACE("Frame Rate: {0}", nbFrames);
+			//printf("%f ms/frame\n", 1000.0 / double(nbFrames));
+			nbFrames = 0;
+			lastTime += 1.0;
+
+		}
 	}
+
 }

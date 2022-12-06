@@ -15,7 +15,7 @@ namespace Vox
 		// Define a type Event Callback Fucnction  which returns a bool (will set the handled) the event of type T will be passed as a reference
 		// dont need to use this to define - this is simply any fucntion that returns a bool and takes in an event reference
 		using EventCallbackFn = std::function<bool( Event<T>&)>;
-		std::map<T, std::vector<EventCallbackFn>> observers;
+		std::unordered_map<T, std::vector<EventCallbackFn>> observers;
 
 	public:
 		// Subscribe to an event - add the type in the map to the observers
@@ -28,13 +28,12 @@ namespace Vox
 		// Dispatch an event
 		void Dispatch(Event<T>& event)
 		{
-			VX_CORE_INFO("Dispatching Event {0}", event.getName());
+			// VX_CORE_INFO("Dispatching Event {0}", event.getName());
 			// If we do not find the event (map.end gives a theoretical element past the map)
 			if (observers.find(event.getType()) == observers.end())
 				return;
 
 			// Loop through all the observers of that event - if it is not handled then process it
-			// Auto&& to do with lvalues and rvalues?
 			// observer(event) callback is the func found, passing in the event as the parameter - event is type Event<T>&. callback is type EventCallbackFunc
 			for (auto&& callback : observers.at(event.getType()))
 			{
