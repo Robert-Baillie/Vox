@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Event.h"
-#include "Vox/Core/MouseCodes.h"
+#include "Core/MouseCodes.h"
 
 namespace Vox
 {

@@ -28,19 +28,19 @@
 #include <glm/glm.hpp>
 
 // Defined Includes
-#include "Vox/Core/Log.h"
-#include "Vox/Core/Window.h"
+#include "Core/Log.h"
+#include "Core/Window.h"
 
 // Events
-#include "Vox/Events/Event.h"
-#include "Vox/Events/EventDispatcher.h"
-#include "Vox/Events/KeyEvents.h"
-#include "Vox/Events/MouseEvents.h"
-#include "Vox/Events/WindowEvents.h"
+#include "Events/Event.h"
+#include "Events/EventDispatcher.h"
+#include "Events/KeyEvents.h"
+#include "Events/MouseEvents.h"
+#include "Events/WindowEvents.h"
 
-#include "Vox/Core/KeyCodes.h"
-#include "Vox/Core/MouseCodes.h"
-#include "Vox/Core/Input.h"
+#include "Core/KeyCodes.h"
+#include "Core/MouseCodes.h"
+#include "Core/Input.h"
 
 
 // OTHERS - Maths, Physics, VoxEngine Types i.e: VXuint, VXbool etc...

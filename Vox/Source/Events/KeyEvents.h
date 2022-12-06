@@ -2,7 +2,7 @@
 
 #include "Event.h"
 
-#include "Vox/Core/KeyCodes.h"
+#include "Core/KeyCodes.h"
 
 namespace Vox
 {
