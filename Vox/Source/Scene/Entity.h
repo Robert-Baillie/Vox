@@ -1,5 +1,4 @@
 #pragma once
-
 #include "EntityComponentManager.h"
 
 
@@ -15,7 +14,7 @@ namespace Vox {
 		};
 
 		// Get ID
-		const int GetID() const { return ID; };
+		const EntityID GetID() const { return ID; };
 
 		void DestroyEntity() { manager->DestroyEntity(ID); };
 
@@ -34,7 +33,7 @@ namespace Vox {
 
 
 	private:
-		int ID;	//TODO: EntityID - AS A UUID - CREATE TYPE CLASS --- -ID List (wrapper for a set)
+		EntityID ID;	//TODO: EntityID - AS A UUID - CREATE TYPE CLASS --- -ID List (wrapper for a set)
 		EntityComponentManager* manager = nullptr;
 
 	};

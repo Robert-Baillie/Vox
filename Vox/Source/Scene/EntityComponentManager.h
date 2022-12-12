@@ -1,5 +1,5 @@
 #pragma once
-#include "ComponentType.h"
+#include "ComponentContainer.h"
 
 #include <unordered_map>
 #include <set>
@@ -15,36 +15,41 @@ namespace Vox {
 		EntityComponentManager() { instance = this; };
 
 		// Entity Functions
-		const int AddNewEntity();
-		void DestroyEntity(const int entity);
+		const EntityID AddNewEntity();
+		void DestroyEntity(const EntityID entity);
 
 		// Component Functions
 		template<typename T>
-		T& GetComponent(const int entity);
+		T& GetComponent(const EntityID entity);
 
 		template<typename T>
-		void AddComponent(const int entity, T component);
+		void AddComponent(const EntityID entity, T component);
 
 		template<typename T>
-		bool HasComponent(const int entity);
+		bool HasComponent(const EntityID entity);
 
 		template<typename T>
-		void RemoveComponent(const int entity);
+		void RemoveComponent(const EntityID entity);
 
 	private:
 		// Storage
 		int entityCount;
 		
 		// Comps
-		std::set<IComponentType> registeredComponents; // List of used components in scene
+		std::set<ComponentTypeID> registeredComponents; // List of used components in scene
 
 		// Entities
-		std::set<int> activeEntities;
+		std::unordered_map<EntityID, std::set<IComponentContainer>> entityComponents;
 
 
 		// Helpers
 		template <typename T>
 		int getComponentTypeID(T componentType);
+
+		bool componentTypeRegistered(ComponentTypeID componentTypeID);
+
+		template <typename T>
+		void registerComponentType(T componentType);
 
 		// Singleton (Again...)
 		static EntityComponentManager* instance;
