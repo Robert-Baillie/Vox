@@ -1,10 +1,14 @@
 #pragma once
-#include "ComponentContainer.h"
-
-#include <unordered_map>
-#include <set>
+#include "pch.h"
 
 namespace Vox {
+
+		class VOX_API TestComponent {
+		public:
+			TestComponent() = default;
+			void Test() { VX_TRACE("Test Works"); }
+		};
+	
 
 	class EntityComponentManager
 	{
@@ -12,28 +16,30 @@ namespace Vox {
 		static EntityComponentManager* GetManager() { return instance; };
 
 		// Constructor (Initialises)
-		EntityComponentManager() { instance = this; };
+		EntityComponentManager()  { 
+			instance = this; 
+		};
 
 		// Entity Functions
-		const EntityID AddNewEntity();
-		void DestroyEntity(const EntityID entity);
+		EntityID AddNewEntity();
+		void DestroyEntity( EntityID entity);
 
 		// Component Functions
 		template<typename T>
-		T& GetComponent(const EntityID entity);
+		T& GetComponent( EntityID entity);
 
 		template<typename T>
-		void AddComponent(const EntityID entity, T component);
+		void AddComponent( EntityID entity, T component);
 
 		template<typename T>
-		bool HasComponent(const EntityID entity);
+		bool HasComponent( EntityID entity);
 
 		template<typename T>
-		void RemoveComponent(const EntityID entity);
+		void RemoveComponent( EntityID entity);
 
 	private:
 		// Storage
-		int entityCount;
+		int entityCount = 0;
 		
 		// Comps
 		std::set<ComponentTypeID> registeredComponents; // List of used components in scene

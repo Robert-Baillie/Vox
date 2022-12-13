@@ -3,6 +3,10 @@
 #include "Window.h"
 #include "Input.h"
 
+#include "Scene/EntityComponentManager.h"
+#include "Scene/Entity.h"
+
+
 namespace Vox {
 
 	class VOX_API Application	// Assign the definition api - used in dll.
@@ -20,7 +24,8 @@ namespace Vox {
 		Window& GetWindow() { return *mainWindow; }
 		static Application& GetApplication() { return *instance; }
 
-
+		// Running
+		virtual void Update() {};
 
 	private:
 		// Window Pointer
@@ -28,6 +33,7 @@ namespace Vox {
 		Input* input;
 
 		// ECS
+		EntityComponentManager* ecs;
 
 		// Singleton
 		static Application* instance;

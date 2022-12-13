@@ -3,18 +3,18 @@
 namespace Vox {
 	EntityComponentManager* EntityComponentManager::instance = nullptr;
 
-	const EntityID EntityComponentManager::AddNewEntity()
+	EntityID EntityComponentManager::AddNewEntity()
 	{
 		// LOGIC FOR MAX ENTITY COUNT
+		// TEST
 
-		// Create an ID - for now this is size, replace with UUID logic
-		
+		instance->entityCount++;
 
-		// Fire off event to the system manager
-
+		instance->entityComponents[entityCount] = std::set<IComponentContainer>();
+		return entityCount;
 	}
 
-	void EntityComponentManager::DestroyEntity(const EntityID entity)
+	void EntityComponentManager::DestroyEntity( EntityID entity)
 	{
 		// LOGIC FOR CHEECKING ENTITY EXISTS
 
@@ -29,10 +29,10 @@ namespace Vox {
 	}
 
 	template<typename T> 
-	inline T& EntityComponentManager::GetComponent(const EntityID entity)
+	T& EntityComponentManager::GetComponent( EntityID entity)
 	{
 		// Check if the type has even been registered
-		if(!componentTypeRegistered<T>())
+		if(componentTypeRegistered<T>(T) == false)
 		{
 			VX_CORE_ERROR("The component you are searching for does not exist.");
 			return nullptr;
@@ -42,7 +42,7 @@ namespace Vox {
 		ComponentTypeID compID = getComponentTypeID<T>();
 		
 		// Find the entity in the entity components list - if found then get the container
-		std::set<IComponentContainer> containers = entityComponents.find(entity)->second;
+		std::set<IComponentContainer> containers = instance->entityComponents.find(entity)->second;
 		
 		// Loop through the containers - if you find the type id then return the component (unfortunately have to static cast again)
 		for(IComponentContainer container : containers)
@@ -61,16 +61,23 @@ namespace Vox {
 	}
 
 	template<typename T>
-	void EntityComponentManager::AddComponent(const EntityID entity, T component)
+	void EntityComponentManager::AddComponent( EntityID entity, T component)
 	{
-		// Blah blah blah
+		// Register Component if not already
+		if (componentTypeRegistered<T>(T) == false) { registerComponentType<T>(T); }
+
+		//  Create a ComponentContainer
+		IComponentContainer component = static_cast<IComponentContainer>(component);
+		instance->entityComponents[entity].insert(component);
+
+		
 	}
 
 	template<typename T>
-	bool EntityComponentManager::HasComponent(const EntityID entity)
+	bool EntityComponentManager::HasComponent( EntityID entity)
 	{
 		// Check if the type has even been registered
-		if(!componentTypeRegistered<T>())
+		if(componentTypeRegistered<T>(T) == false)
 		{
 			VX_CORE_ERROR("The component you are searching for does not exist.");
 			return false;
@@ -80,7 +87,7 @@ namespace Vox {
 		ComponentTypeID compID = getComponentTypeID<T>();
 		
 		// Find the entity in the entity components list - if found then get the container
-		std::set<IComponentContainer> containers = entityComponents.find(entity)->second;
+		std::set<IComponentContainer> containers = instance->entityComponents.find(entity)->second;
 		
 		// Loop through the containers - if you find the type id then return true
 		for(IComponentContainer container : containers)
@@ -95,9 +102,18 @@ namespace Vox {
 	}
 
 	template<typename T>
-	void EntityComponentManager::RemoveComponent(const EntityID entity)
+	void EntityComponentManager::RemoveComponent( EntityID entity)
 	{
-		// Blah blah blah
+		// Check if the type has even been registered
+		if (componentTypeRegistered<T>(T) == false && HasComponent<T>(entity) == false)
+		{
+			VX_CORE_ERROR("The component you are searching for does not exist.");
+			return nullptr;
+		}
+
+		//  Get the container and delete
+		IComponentContainer component = static_cast<IComponentContainer>(component);
+		instance->entityComponents[entity].erase(component);
 
 	}
 
@@ -112,7 +128,7 @@ namespace Vox {
     bool EntityComponentManager::componentTypeRegistered(ComponentTypeID componentTypeID)
     {
 		// Loop over registered componenets, return if found
-		for(auto id : registeredComponents) {
+		for(auto id : instance->registeredComponents) {
   			if (id == componentTypeID) return true;
 		} 
 
@@ -124,7 +140,7 @@ namespace Vox {
 	{
 		// Grab the ID and insert into the set
 		ComponentTypeID id = getComponentTypeID<T>();
-		registeredComponents.insert(id);
+		instance->registeredComponents.insert(id);
 	}
 
 

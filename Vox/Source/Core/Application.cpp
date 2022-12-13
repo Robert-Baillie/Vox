@@ -1,5 +1,5 @@
 #include "Application.h"
-
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace Vox {
 	Application* Application::instance = nullptr;
@@ -20,8 +20,8 @@ namespace Vox {
 		input = new Input;
 		input->Initialise();
 
-	
-#include "spdlog/sinks/stdout_color_sinks.h"
+		// Initialise ECS
+		ecs = new EntityComponentManager;
 
 	}
 
@@ -51,11 +51,11 @@ namespace Vox {
 			mainWindow->SwapBuffers();
 
 			printFrameCount();
-			
+			Update();
 		}
 	}
 
-
+	
 	
 
 	void Application::printFrameCount()

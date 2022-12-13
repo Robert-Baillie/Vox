@@ -10,6 +10,10 @@
 #include "Core/MouseCodes.h"
 #include "Core/Input.h"
 
+// SCENE
+#include "Scene/Entity.h"
+
+
 /*ENTRY POINT*/
 #include "Core/EntryPoint.h"
 /*------------*/
