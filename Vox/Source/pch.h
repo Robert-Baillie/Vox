@@ -45,5 +45,6 @@
 
 // OTHERS - Maths, Physics, VoxEngine Types i.e: VXuint, VXbool etc...
 #include "Core/Types.h"
-#include "Scene/ComponentContainer.h"
+#include "Scene/ComponentType.h"
+#include "Scene/ComponentList.h"
 #include "Scene/EntityComponentManager.h"

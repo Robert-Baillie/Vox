@@ -13,7 +13,6 @@
 // SCENE
 #include "Scene/Entity.h"
 
-
 /*ENTRY POINT*/
 #include "Core/EntryPoint.h"
 /*------------*/

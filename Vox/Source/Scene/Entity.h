@@ -25,19 +25,33 @@ namespace Vox {
 		T& GetComponent() { return manager->GetComponent<T>(ID); };
 
 		template<typename T>
-		void AddComponent(T component) { manager->AddComponent<T>(ID, component); };
+		void AddComponent(T component) {  manager->AddComponent<T>(ID, component); };
 
-		template<typename T>
-		bool HasComponent() { return manager->GetComponent<T>(ID); };
+		//template<typename T>
+		//bool HasComponent() { return manager->HasComponent<T>(ID); };
 
-		template<typename T>
-		void RemoveComponent() { manager->GetComponent<T>(ID); };
+		//template<typename T>
+		//void RemoveComponent() { manager->RemoveComponent<T>(ID); };
 
 
 	private:
-		EntityID ID;	//TODO: EntityID - AS A UUID 
+		EntityID ID = 0;	//TODO: EntityID - AS A UUID 
 		EntityComponentManager* manager = nullptr;
 
 	};
+
+		class VOX_API TestComponent {
+	public:
+		TestComponent() = default;
+		void Test() { VX_TRACE("Test Works"); }
+	};
+
+		class VOX_API TestComponentTwo {
+		public:
+			TestComponentTwo() = default;
+			void Test() { VX_TRACE("Test Works2"); }
+		};
+
+
 
 }

@@ -16,12 +16,14 @@ namespace Vox {
 		mainWindow->Initialise();
 		VX_CORE_INFO("Window Initialisation Complete");
 
-		// Initilise Input
-		input = new Input;
-		input->Initialise();
 
 		// Initialise ECS
 		ecs = new EntityComponentManager;
+
+
+		// Initilise Input
+		input = new Input;
+		input->Initialise();
 
 	}
 

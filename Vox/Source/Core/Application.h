@@ -28,13 +28,15 @@ namespace Vox {
 		virtual void Update() {};
 
 	private:
+		// ECS
+		EntityComponentManager* ecs;
+
+
 		// Window Pointer
 		Window* mainWindow;
 		Input* input;
 
-		// ECS
-		EntityComponentManager* ecs;
-
+		
 		// Singleton
 		static Application* instance;
 
