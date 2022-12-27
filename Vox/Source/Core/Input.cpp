@@ -50,19 +50,19 @@ namespace Vox {
 
 		// Subscribe to necessary events
 		// Key Events
-		Application::GetApplication().VoxEventDispatcher.Subscribe(VoxEvents::KeyPressed, std::bind(&Input::OnKeyPressed, instance, std::placeholders::_1));
-		Application::GetApplication().VoxEventDispatcher.Subscribe(VoxEvents::KeyReleased, std::bind(&Input::OnKeyReleased , instance, std::placeholders::_1));
+		Application::GetApplication().InputEventDispatcher.Subscribe(VoxEvents::KeyPressed, std::bind(&Input::OnKeyPressed, instance, std::placeholders::_1));
+		Application::GetApplication().InputEventDispatcher.Subscribe(VoxEvents::KeyReleased, std::bind(&Input::OnKeyReleased , instance, std::placeholders::_1));
 
 		// Mouse Events
 		// Buttons
-		Application::GetApplication().VoxEventDispatcher.Subscribe(VoxEvents::MouseButtonPressed, std::bind(&Input::OnMouseButtonPressed, instance, std::placeholders::_1));
-		Application::GetApplication().VoxEventDispatcher.Subscribe(VoxEvents::MouseButtonReleased, std::bind(&Input::OnMouseButtonReleased, instance, std::placeholders::_1));
+		Application::GetApplication().InputEventDispatcher.Subscribe(VoxEvents::MouseButtonPressed, std::bind(&Input::OnMouseButtonPressed, instance, std::placeholders::_1));
+		Application::GetApplication().InputEventDispatcher.Subscribe(VoxEvents::MouseButtonReleased, std::bind(&Input::OnMouseButtonReleased, instance, std::placeholders::_1));
 
 		// Moving
-		Application::GetApplication().VoxEventDispatcher.Subscribe(VoxEvents::MouseMoved, std::bind(&Input::OnMouseMoved, instance, std::placeholders::_1));
+		Application::GetApplication().InputEventDispatcher.Subscribe(VoxEvents::MouseMoved, std::bind(&Input::OnMouseMoved, instance, std::placeholders::_1));
 
 		// Scrolling
-		Application::GetApplication().VoxEventDispatcher.Subscribe(VoxEvents::MouseScrolled, std::bind(&Input::OnMouseScrolled, instance, std::placeholders::_1));
+		Application::GetApplication().InputEventDispatcher.Subscribe(VoxEvents::MouseScrolled, std::bind(&Input::OnMouseScrolled, instance, std::placeholders::_1));
 
 	}
 

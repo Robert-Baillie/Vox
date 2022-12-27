@@ -4,6 +4,7 @@ class Sandbox : public Vox::Application
 {
 public:
 	Vox::Entity t;
+	Vox::Entity p;
 
 	bool firstTime = true;
 	bool firstTime2 = true;
@@ -26,24 +27,35 @@ public:
 
 		if (Vox::Input::IsKeyPressed(Vox::Key::SPACE) && firstTime)
 		{
-			VX_TRACE("Test Entity ID: {0}", t.GetID());
+			t.DestroyEntity();
+			p.DestroyEntity();
+			t.GetComponent<Vox::TestComponent>();
+
 			firstTime = false;
 		}
 
 		if (Vox::Input::IsKeyPressed(Vox::Key::W) && firstTime2)
 		{
-			Vox::TestComponent tc = Vox::TestComponent();
-			Vox::TestComponentTwo tc2 = Vox::TestComponentTwo();
+
+
+			VX_TRACE("StepTwo");
+			Vox::TestComponent tc = Vox::TestComponent("One");
+			Vox::TestComponent tc2 = Vox::TestComponent("Two");
 			t.AddComponent(tc);
-			t.AddComponent(tc2);
+			p.AddComponent(tc2);
 			firstTime2 = false;
+			firstTime3 = true;
 		}
 
 		
 		if (Vox::Input::IsKeyPressed(Vox::Key::S) && firstTime3)
 		{
-			t.GetComponent<Vox::TestComponent>().Test();
-			t.GetComponent<Vox::TestComponentTwo>().Test();
+			VX_TRACE("Before Contained: {0}: ", t.HasComponent<Vox::TestComponent>());
+			t.RemoveComponent<Vox::TestComponent>();
+			p.RemoveComponent<Vox::TestComponent>();
+			VX_TRACE("After Contained: {0}: ", t.HasComponent<Vox::TestComponent>());
+			firstTime3 = false;
+			firstTime2 = true;
 		}
 
 

@@ -10,6 +10,7 @@ namespace Vox {
 	public:
 		IComponentList(TypeID id) { typeID = id; }
 		TypeID GetTypeID() { return typeID; }
+		virtual void Remove(EntityID entity) {};
 
 	private:
 		TypeID typeID;
@@ -25,25 +26,27 @@ namespace Vox {
 			entityMap[entity].push_back(component);
 		}
 
-		void Remove(EntityID entity, T component) {
-
-			// Loop through and erase what is needed
-			int indx = 0;
-
-			for (T comp : entityMap[entity])
-			{
-				if (comp == component) entityMap[entity].erase(indx);
-
-				indx++;
+		void Remove(EntityID entity) {
+			VX_CORE_INFO("Attempting To Remove an Entity");
+			if (entityMap[entity].empty() == false) {
+				entityMap[entity].erase(entityMap[entity].begin());
+				return;
 			}
 
 			VX_CORE_ERROR("Trying To Delete a component that does not exist.");
 		}
 
+		bool Has(EntityID entity)
+		{
+			if (entityMap[entity].empty()) return false;
+			
+			return true;
+		}
+
 		// Getting a Component
 		T* Get(EntityID entity) {
 			// If we do not find the key, return an error, else
-			if (entityMap.find(entity) == entityMap.end())
+ 			if (entityMap.find(entity) == entityMap.end())
 			{
 				VX_CORE_ERROR("The component you are looking for does not exist!");
 				return nullptr;

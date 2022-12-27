@@ -22,6 +22,20 @@ namespace Vox
 		WindowClosed
 	};
 
+
+	enum class SystemEvents
+	{
+		None,
+
+		// Entity
+		OnEntityAdded,
+		OnEntityDestroyed,
+
+		// Components
+		OnComponentAdded,
+		OnComponentRemoved
+	};
+
 	// Class that holds the bease construction for an event
 	// Events must inherit from this class
 	// Events must hold a type T to identify the event.

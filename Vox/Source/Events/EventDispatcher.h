@@ -23,6 +23,7 @@ namespace Vox
 		{
 			observers[type].push_back(func);
 		}
+		
 
 
 		// Dispatch an event

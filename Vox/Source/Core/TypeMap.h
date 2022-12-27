@@ -14,15 +14,18 @@ namespace Vox {
 		template<typename T>
 		TypeID GetTypeID() {
 			// Return int if already exists
-			if (type_map.count(typeid(T))) return type_map[typeid(T)];
+			std::string typeName = typeid(T).name();
+
+
+			if (type_map.find(typeName) != type_map.end()) return type_map[typeName];
 
 			// Else Register and return
-			type_map[typeid(T)] = type_map.size() +1;
-			return type_map[typeid(T)];
+			type_map[typeName] = type_map.size() +1;
+			return type_map[typeName];
 		}
 
 	private:
-		std::unordered_map<std::type_index, TypeID> type_map;
+		std::unordered_map<std::string, TypeID> type_map;
 
 	};
 

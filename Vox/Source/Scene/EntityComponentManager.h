@@ -1,9 +1,10 @@
 #pragma once
 #include "pch.h"
+
 #include "Core/TypeMap.h"
 
-namespace Vox {
 
+namespace Vox {
 
 
 	class EntityComponentManager
@@ -19,57 +20,79 @@ namespace Vox {
 
 
 		// Entity Functions
-		EntityID AddNewEntity()
-		{
-			// LOGIC FOR MAX ENTITY COUNT
-			// TEST
+		EntityID AddNewEntity();
+		void DestroyEntity(EntityID entity);
 
-			instance->entityCount++;
-
-			//instance->entityComponents[entityCount] = std::unordered_set<IComponentContainer>();
-			return entityCount;
-		}
-
-
-
-		void DestroyEntity(EntityID entity) {}
-
+		
 		// Component Functions
 		template<typename T>
-		T& GetComponent(EntityID entity) {
+		T* GetComponent(EntityID entity) {
+			if (!(std::find(entities.begin(), entities.end(), entity) != entities.end())) return nullptr;
+
+
 			// Find the component list
 			std::shared_ptr<ComponentList<T>> compList = FindComponentList<T>();
 
 			// Return
-			return *compList->Get(entity);
+			return compList->Get(entity);
 
 		}
 
 		template<typename T>
 		void AddComponent( EntityID entity, T component) {
+
+			if (!(std::find(entities.begin(), entities.end(), entity) != entities.end())) return;
 			// Find the component list
 			std::shared_ptr<ComponentList<T>> compList = FindComponentList<T>();
 			
 			// Insert
 			compList->Insert(entity, component);
 
+			// Launch Event
+			// Logic for adding already handled, simply send the event
+			ComponentAddedEvent event(entity, compList->GetTypeID());
+			Vox::Application::GetApplication().SystemEventDispatcher.Dispatch(event);
 		}
 
-		//template<typename T>
-		//bool HasComponent(EntityID entity) {}
+		template<typename T>
+		bool HasComponent(EntityID entity) {
 
-		//template<typename T>
-		//void RemoveComponent(EntityID entity) {}
-#
-		
+			if (!(std::find(entities.begin(), entities.end(), entity) != entities.end())) return false;
+
+
+			std::shared_ptr<ComponentList<T>> compList = FindComponentList<T>();
+
+			return compList->Has(entity);
+		}
+
+		template<typename T>
+		void RemoveComponent(EntityID entity) {
+
+			if (!(std::find(entities.begin(), entities.end(), entity) != entities.end())) return;
+
+			std::shared_ptr<ComponentList<T>> compList = FindComponentList<T>();
+
+			compList->Remove(entity);
+
+
+			ComponentRemovedEvent event(entity, compList->GetTypeID());
+			Vox::Application::GetApplication().SystemEventDispatcher.Dispatch(event);
+
+		}
+
+		template<typename T>
+		TypeID GetCompTypeID()
+		{
+			return instance->typeMap.GetTypeID<T>();
+		}
 
 	private:
 		// Storage
 		int entityCount = 0;
 		
 		// List of Components
-		std::vector<std::shared_ptr<IComponentList>> componentLists;
-
+		std::vector<std::shared_ptr<IComponentList>> componentLists;;
+		std::vector<EntityID> entities;
 
 		TypeMap typeMap;
 
@@ -102,6 +125,10 @@ namespace Vox {
 			return newCompList;
 
 		}
+
+
+		bool EntityExists(EntityID entity);
+		
 
 		// Singleton (Again...)
 		static EntityComponentManager* instance;

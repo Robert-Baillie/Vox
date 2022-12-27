@@ -3,9 +3,12 @@
 #include "Window.h"
 #include "Input.h"
 
-#include "Scene/EntityComponentManager.h"
+
+#include "Scene/EntityComponentManager.h"	
 #include "Scene/Entity.h"
 
+#include "Scene/Systems/SystemManager.h"
+#include "Scene/Systems/TestSystem.h"
 
 namespace Vox {
 
@@ -18,7 +21,8 @@ namespace Vox {
 		void Run();
 
 		// Event Dispatchers
-		EventDispatcher<VoxEvents> VoxEventDispatcher;
+		EventDispatcher<VoxEvents> InputEventDispatcher;
+		EventDispatcher<SystemEvents> SystemEventDispatcher;
 
 		// Utility
 		Window& GetWindow() { return *mainWindow; }
@@ -29,8 +33,8 @@ namespace Vox {
 
 	private:
 		// ECS
-		EntityComponentManager* ecs;
-
+		EntityComponentManager* entityComponentManager;
+		SystemManager* systemManager;
 
 		// Window Pointer
 		Window* mainWindow;

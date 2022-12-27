@@ -18,8 +18,11 @@ namespace Vox {
 
 
 		// Initialise ECS
-		ecs = new EntityComponentManager;
+		entityComponentManager = new EntityComponentManager;
+		systemManager = new SystemManager;
 
+		// Initialising all Systems
+		systemManager->RegisterSystem<TestSystem>();
 
 		// Initilise Input
 		input = new Input;
@@ -51,6 +54,9 @@ namespace Vox {
 
 
 			mainWindow->SwapBuffers();
+
+			// Run Systems
+			systemManager->Update();
 
 			printFrameCount();
 			Update();

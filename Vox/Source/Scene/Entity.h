@@ -2,7 +2,6 @@
 #include "pch.h"
 
 
-
 namespace Vox {
 
 	class VOX_API Entity
@@ -15,42 +14,74 @@ namespace Vox {
 
 		};
 
-		// Get ID
-		EntityID GetID() const { return ID; };
+		~Entity()
+		{
+			manager = nullptr;
 
-		void DestroyEntity() { manager->DestroyEntity(ID); };
+		}
+
+		void DestroyEntity() { 
+			manager->DestroyEntity(ID);
+			//VX_CORE_ERROR("DESTROYING ENTITY");
+			this->~Entity();
+		};
 
 		/// Component Utility Methods
 		template<typename T>
-		T& GetComponent() { return manager->GetComponent<T>(ID); };
+		T* GetComponent() {
+			if (manager != nullptr) { return manager->GetComponent<T>(ID); }
+
+			VX_CORE_ERROR("This entity is/is being destroyed.");
+			return nullptr;
+		
+		};
 
 		template<typename T>
-		void AddComponent(T component) {  manager->AddComponent<T>(ID, component); };
+		void AddComponent(T component) {
+			if (manager != nullptr) {
+				manager->AddComponent<T>(ID, component);
+				return;
+			};
+			VX_CORE_ERROR("This entity is/is being destroyed.");
+		};
 
-		//template<typename T>
-		//bool HasComponent() { return manager->HasComponent<T>(ID); };
+			
 
-		//template<typename T>
-		//void RemoveComponent() { manager->RemoveComponent<T>(ID); };
+		template<typename T>
+		bool HasComponent() { 
+			if (manager != nullptr) { return manager->HasComponent<T>(ID); }
+			VX_CORE_ERROR("This entity is/is being destroyed.");
+			return false;
+		};
+
+		template<typename T>
+		void RemoveComponent() {
+			if (manager != nullptr) { manager->RemoveComponent<T>(ID); }
+			VX_CORE_ERROR("This entity is/is being destroyed.");
+
+		};
+		
+	
 
 
 	private:
 		EntityID ID = 0;	//TODO: EntityID - AS A UUID 
 		EntityComponentManager* manager = nullptr;
 
+		friend class EntityComponentManager;
 	};
 
 		class VOX_API TestComponent {
 	public:
-		TestComponent() = default;
-		void Test() { VX_TRACE("Test Works"); }
+		TestComponent(std::string n) { name = n; }
+		~TestComponent() = default;
+
+
+		void Test() { VX_TRACE("Test Works for entity of name: {0}", name); }
+		private:
+			std::string name;
 	};
 
-		class VOX_API TestComponentTwo {
-		public:
-			TestComponentTwo() = default;
-			void Test() { VX_TRACE("Test Works2"); }
-		};
 
 
 
