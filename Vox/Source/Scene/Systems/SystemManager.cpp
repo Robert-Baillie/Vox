@@ -49,13 +49,13 @@ namespace Vox {
 	bool SystemManager::OnComponentAdded(Event<SystemEvents>& event) {
 		ComponentAddedEvent* entityEvent = static_cast<ComponentAddedEvent*>(&event);
 
-		VX_CORE_INFO("Searching for component id system: {0}", entityEvent->GetComponentTypeID());
+		//VX_CORE_INFO("Searching for component id system: {0}", entityEvent->GetComponentTypeID());
 
 		for (std::shared_ptr<System> sys : systemList)
 		{
 			if (sys->GetTypeID() == entityEvent->GetComponentTypeID())
 			{
-				VX_CORE_INFO("Found ID!");
+				//VX_CORE_INFO("Found ID!");
 				sys->AddEntity(entityEvent->GetEntityID());
 				return true;
 			}
@@ -69,13 +69,13 @@ namespace Vox {
 		ComponentRemovedEvent* entityEvent = static_cast<ComponentRemovedEvent*>(&event);
 
 
-		VX_CORE_INFO("Searching for component id system: {0}", entityEvent->GetComponentTypeID());
+		//VX_CORE_INFO("Searching for component id system: {0}", entityEvent->GetComponentTypeID());
 
 		for (std::shared_ptr<System> sys : systemList)
 		{
 			if (sys->GetTypeID() == entityEvent->GetComponentTypeID())
 			{
-				VX_CORE_INFO("Found ID!");
+				//VX_CORE_INFO("Found ID!");
 				sys->RemoveEntity(entityEvent->GetEntityID());
 				return true;
 			}

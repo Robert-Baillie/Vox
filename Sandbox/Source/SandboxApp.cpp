@@ -38,7 +38,6 @@ public:
 		{
 
 
-			VX_TRACE("StepTwo");
 			Vox::TestComponent tc = Vox::TestComponent("One");
 			Vox::TestComponent tc2 = Vox::TestComponent("Two");
 			t.AddComponent(tc);
@@ -50,10 +49,8 @@ public:
 		
 		if (Vox::Input::IsKeyPressed(Vox::Key::S) && firstTime3)
 		{
-			VX_TRACE("Before Contained: {0}: ", t.HasComponent<Vox::TestComponent>());
 			t.RemoveComponent<Vox::TestComponent>();
 			p.RemoveComponent<Vox::TestComponent>();
-			VX_TRACE("After Contained: {0}: ", t.HasComponent<Vox::TestComponent>());
 			firstTime3 = false;
 			firstTime2 = true;
 		}

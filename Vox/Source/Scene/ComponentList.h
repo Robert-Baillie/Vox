@@ -27,7 +27,7 @@ namespace Vox {
 		}
 
 		void Remove(EntityID entity) {
-			VX_CORE_INFO("Attempting To Remove an Entity");
+			//VX_CORE_INFO("Attempting To Remove an Entity");
 			if (entityMap[entity].empty() == false) {
 				entityMap[entity].erase(entityMap[entity].begin());
 				return;
