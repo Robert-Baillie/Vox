@@ -21,6 +21,8 @@ namespace Vox {
 			systemList.push_back(sys);
 		}
 
+		std::vector<std::shared_ptr<System>> GetSystemList() { return systemList; }
+
 		void Update()
 		{
 			for (std::shared_ptr<System> sys : systemList)

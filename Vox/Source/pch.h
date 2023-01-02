@@ -51,6 +51,3 @@
 #include "Core/Types.h"
 #include "Scene/ComponentType.h"
 #include "Scene/ComponentList.h"
-
-#include "Core/Components/Transform.h"
-#include "Core/Components/SpriteRenderer.h"

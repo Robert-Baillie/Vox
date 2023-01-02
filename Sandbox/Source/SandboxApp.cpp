@@ -4,7 +4,6 @@ class Sandbox : public Vox::Application
 {
 public:
 	Vox::Entity t;
-	Vox::Entity p;
 
 	bool firstTime = true;
 	bool firstTime2 = true;
@@ -27,32 +26,26 @@ public:
 
 		if (Vox::Input::IsKeyPressed(Vox::Key::SPACE) && firstTime)
 		{
-			t.DestroyEntity();
-			p.DestroyEntity();
-			t.GetComponent<Vox::TestComponent>();
+			Vox::SpriteRenderer sr = Vox::SpriteRenderer("face");
+			t.AddComponent<Vox::SpriteRenderer>(sr);
 
+			t.GetComponent<Vox::Transform>()->Position = glm::vec3(200.0f, 200.0f, 0.0f);
+			t.GetComponent<Vox::Transform>()->Scale = glm::vec3(300.0f, 400.0f, 0.0f);
+			t.GetComponent<Vox::Transform>()->Rotation = glm::vec3(0, 0, 45.0);
+			
+			
 			firstTime = false;
 		}
 
 		if (Vox::Input::IsKeyPressed(Vox::Key::W) && firstTime2)
 		{
+			t.GetComponent<Vox::SpriteRenderer>();
 
-
-			Vox::TestComponent tc = Vox::TestComponent("One");
-			Vox::TestComponent tc2 = Vox::TestComponent("Two");
-			t.AddComponent(tc);
-			p.AddComponent(tc2);
-			firstTime2 = false;
-			firstTime3 = true;
 		}
 
 		
 		if (Vox::Input::IsKeyPressed(Vox::Key::S) && firstTime3)
 		{
-			t.RemoveComponent<Vox::TestComponent>();
-			p.RemoveComponent<Vox::TestComponent>();
-			firstTime3 = false;
-			firstTime2 = true;
 		}
 
 

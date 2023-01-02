@@ -10,6 +10,11 @@
 #include "Core/MouseCodes.h"
 #include "Core/Input.h"
 
+
+// COMPONENTS
+#include "Core/Components/Transform.h"
+#include "Core/Components/SpriteRenderer.h"
+
 // SCENE
 #include "Scene/Entity.h"
 

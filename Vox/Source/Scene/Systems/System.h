@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #include "Core/Types.h"
+#include "Rendering/Renderer2D.h"
 
 // To be inherited by other systems i.e ScriptSystem : System
 namespace Vox
@@ -10,7 +11,7 @@ namespace Vox
 
 	class System {
 	public:
-		System(){};
+		System() = default;
 		virtual ~System() = default;
 
 		TypeID GetTypeID() { return typeID; }
@@ -27,6 +28,8 @@ namespace Vox
 				
 		}
 
+		void AssignRenderer(std::shared_ptr<Renderer2D> ren) {  renderer = ren; }
+
 		virtual void Stop() {};
 		virtual void Start() {};
 		virtual void Awake() {};
@@ -36,5 +39,7 @@ namespace Vox
 		std::string name;
 		TypeID typeID;
 		std::vector<EntityID> entities;
+
+		std::shared_ptr<Renderer2D> renderer;
 	};
 }

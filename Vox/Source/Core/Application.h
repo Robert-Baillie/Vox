@@ -8,7 +8,14 @@
 #include "Scene/Entity.h"
 
 #include "Scene/Systems/SystemManager.h"
-#include "Scene/Systems/TestSystem.h"
+#include "Scene/Systems/SpriteRendererSystem.h"
+
+#include "Core/Resource/ResourceManager.h"
+#include "Rendering/Renderer2D.h"
+
+#include "Rendering/Shader.h"
+
+
 
 namespace Vox {
 
@@ -26,6 +33,7 @@ namespace Vox {
 
 		// Utility
 		Window& GetWindow() { return *mainWindow; }
+		std::shared_ptr<Renderer2D> GetRenderer2D() { return renderer2D; }
 		static Application& GetApplication() { return *instance; }
 
 		// Running
@@ -40,6 +48,9 @@ namespace Vox {
 		Window* mainWindow;
 		Input* input;
 
+		// Renderer
+		ResourceManager* resources;
+		std::shared_ptr<Renderer2D> renderer2D;
 		
 		// Singleton
 		static Application* instance;

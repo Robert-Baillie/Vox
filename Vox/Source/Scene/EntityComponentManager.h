@@ -47,7 +47,6 @@ namespace Vox {
 			
 			// Insert
 			compList->Insert(entity, component);
-
 			// Launch Event
 			// Logic for adding already handled, simply send the event
 			ComponentAddedEvent event(entity, compList->GetTypeID());

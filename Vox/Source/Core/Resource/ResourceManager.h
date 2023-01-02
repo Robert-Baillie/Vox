@@ -47,8 +47,10 @@ namespace Vox {
 
 		// Reads and individual file
 		static std::string readFile(const char* fileLocation);
+
+		static ResourceManager* instance;
+
 	};
 
-	static ResourceManager Resources;
 }
 

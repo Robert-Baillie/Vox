@@ -1,9 +1,14 @@
 #pragma once
-#include "pch.h"
+
 #include "System.h"
 
-#include "Core/Types.h"	
+#include "Rendering/Renderer2D.h"
 
+#include "Core/Components/Transform.h"
+#include "Core/Components/SpriteRenderer.h"
+
+
+#include "glm/glm.hpp"
 namespace Vox
 {
 	class SpriteRendererSystem : public System
@@ -14,15 +19,28 @@ namespace Vox
 			name = "SpriteRendererSystem";
 			typeID = EntityComponentManager::GetManager()->GetCompTypeID<Vox::SpriteRenderer>();
 		}
-
-		void Render()  {
+		
+		void Render() override  {
 			// Render the sprite
 			for (auto ent : entities)
 			{
 				// Get The Transform and Set uniform 
-				EntityComponentManager::GetManager()->GetComponent<Transform>(ent);
-				EntityComponentManager::GetManager()->GetComponent<SpriteRenderer>(ent);
+				Transform& transform = *EntityComponentManager::GetManager()->GetComponent<Transform>(ent);
+				SpriteRenderer& sr = *EntityComponentManager::GetManager()->GetComponent<SpriteRenderer>(ent);
+
+				if (renderer == nullptr) VX_CORE_ERROR("RENDERER 2D NOT ASSIGNED");
+			
+				renderer->DrawSprite(transform, sr); //  Should be assigned in App initialisation
+				
+				
+
 			}
+
 		}
+
+	
 	};
+
+	
+
 }

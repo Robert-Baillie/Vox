@@ -1,6 +1,7 @@
 #pragma once
 #include "pch.h"
 
+#include "Core/Components/Transform.h"	
 
 namespace Vox {
 
@@ -12,6 +13,9 @@ namespace Vox {
 			manager = EntityComponentManager::GetManager();
 			ID = manager->AddNewEntity(); 
 
+			// Create a Transform everytime
+			
+			AddComponent<Transform>(Transform());
 		};
 
 		~Entity()
