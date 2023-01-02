@@ -12,6 +12,7 @@
 //#include <sstream>
 #include <string>
 #include <vector>
+#include <map>
 #include <unordered_map>
 #include <set>
 
@@ -46,7 +47,10 @@
 #include "Core/Input.h"
 
 
-// OTHERS - Maths, Physics, VoxEngine Types i.e: VXuint, VXbool etc...
+// Components
 #include "Core/Types.h"
 #include "Scene/ComponentType.h"
 #include "Scene/ComponentList.h"
+
+#include "Core/Components/Transform.h"
+#include "Core/Components/SpriteRenderer.h"

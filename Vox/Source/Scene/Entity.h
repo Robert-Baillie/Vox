@@ -71,18 +71,7 @@ namespace Vox {
 		friend class EntityComponentManager;
 	};
 
-		class VOX_API TestComponent {
-	public:
-		TestComponent(std::string n) { name = n; }
-		~TestComponent() = default;
-
-
-		void Test() { VX_TRACE("Test Works for entity of name: {0}", name); }
-		private:
-			std::string name;
-	};
-
-
+	
 
 
 }

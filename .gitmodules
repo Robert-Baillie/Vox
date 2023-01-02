@@ -7,3 +7,6 @@
 [submodule "Vox/External/glfw"]
 	path = Vox/External/glfw
 	url = https://github.com/glfw/glfw
+[submodule "Vox/External/stb"]
+	path = Vox/External/stb
+	url = https://github.com/nothings/stb
