@@ -8,8 +8,6 @@
 namespace Vox {
 	struct VOX_API SpriteRenderer : public Component {
 
-		
-
 		SpriteRenderer(std::string name) : Component() {
 			TextureName = name;
 		};

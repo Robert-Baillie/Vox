@@ -33,7 +33,7 @@ namespace Vox {
 
 		// Utility
 		Window& GetWindow() { return *mainWindow; }
-		std::shared_ptr<Renderer2D> GetRenderer2D() { return renderer2D; }
+		//std::shared_ptr<Renderer2D> GetRenderer2D() { return renderer2D; }
 		static Application& GetApplication() { return *instance; }
 
 		// Running
@@ -50,7 +50,6 @@ namespace Vox {
 
 		// Renderer
 		ResourceManager* resources;
-		std::shared_ptr<Renderer2D> renderer2D;
 		
 		// Singleton
 		static Application* instance;

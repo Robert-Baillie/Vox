@@ -40,9 +40,13 @@ namespace Vox {
 
 		/// Shaders
 		LoadShader("C:/Development/Vox/Vox/Source/Core/Resource/SpriteShaderV.shader", "C:/Development/Vox/Vox/Source/Core/Resource/SpriteShaderF.shader", nullptr, "SPRITE"); // Works with full address...
+		VX_CORE_INFO("Sprite Shader Loaded.");
 
 		// Textures
-		// currently no default textures
+		LoadTexture("C:/Development/Vox/Vox/Source/Core/Resource/awesomeface.png", "face", false);
+		VX_CORE_INFO("Test Texture Loaded.");
+
+
 	}
 
 
@@ -62,6 +66,7 @@ namespace Vox {
 	Texture ResourceManager::LoadTexture(const char* filePath, std::string name, bool isAlpha)
 	{
 		instance->textures[name] = loadTextureFromFile(filePath, isAlpha);
+		VX_CORE_ERROR("HERE");
 		return instance->textures[name];
 	}
 
@@ -115,6 +120,7 @@ namespace Vox {
 
 		// Generate the texture
 		tex.Generate(width, height, texData);
+		VX_CORE_INFO("Texture Generate Done");
 
 		// Free the image data
 		stbi_image_free(texData);

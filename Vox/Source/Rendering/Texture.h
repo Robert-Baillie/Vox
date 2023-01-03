@@ -1,5 +1,11 @@
 #pragma once
-#include "pch.h"
+
+#ifndef TEXTURE
+#define TEXTURE
+#include "Core/Log.h"
+
+#include "glad/glad.h"
+
 
 
 namespace Vox {
@@ -32,7 +38,7 @@ namespace Vox {
 		void Generate(GLuint width, GLuint height, unsigned char* data);
 
 		// Texture binding - binds to active GL_TEXTURE_2D object
-		void Bind();
+		 void Bind() ;
 
 
 		GLuint checkError(const char* context);
@@ -40,3 +46,5 @@ namespace Vox {
 	};
 
 }
+
+#endif

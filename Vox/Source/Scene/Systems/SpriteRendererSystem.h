@@ -21,6 +21,8 @@ namespace Vox
 		}
 		
 		void Render() override  {
+
+			
 			// Render the sprite
 			for (auto ent : entities)
 			{
@@ -28,7 +30,7 @@ namespace Vox
 				Transform& transform = *EntityComponentManager::GetManager()->GetComponent<Transform>(ent);
 				SpriteRenderer& sr = *EntityComponentManager::GetManager()->GetComponent<SpriteRenderer>(ent);
 
-				if (renderer == nullptr) VX_CORE_ERROR("RENDERER 2D NOT ASSIGNED");
+				if (renderer == nullptr) { VX_CORE_ERROR("RENDERER 2D NOT ASSIGNED"); }
 			
 				renderer->DrawSprite(transform, sr); //  Should be assigned in App initialisation
 				

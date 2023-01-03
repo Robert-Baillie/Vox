@@ -29,6 +29,8 @@ namespace Vox {
 		VX_CORE_INFO("Starting Resource Initialisation");
 		resources = new ResourceManager;
 		resources->Initialise();
+		// TEST
+
 		VX_CORE_INFO("Resource Initilation Complete");
 
 
@@ -40,12 +42,11 @@ namespace Vox {
 		glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(mainWindow->GetBufferWidth()), static_cast<float>(mainWindow->GetBufferHeight()),
 			0.0f, -1.0f, 1.0f);
 
-		ResourceManager::GetShader("SPRITE").Use().SetInteger("image", 0);
-		ResourceManager::GetShader("SPRITE").SetMatrix4("projection", projection);
+		resources->GetShader("SPRITE").Use().SetInteger("image", 0);
+		resources->GetShader("SPRITE").SetMatrix4("projection", projection);
 
-		Shader spriteShader = ResourceManager::GetShader("SPRITE");
+		Shader spriteShader = resources->GetShader("SPRITE");
 		Renderer2D render = Renderer2D(spriteShader);
-		renderer2D = std::make_shared<Renderer2D>(render); 
 		VX_CORE_INFO("Renderer Initilation Complete");
 
 
@@ -61,18 +62,10 @@ namespace Vox {
 
 		// Update the Renderer on All
 		for (std::shared_ptr<System> sys : systemManager->GetSystemList()) {
-			sys->AssignRenderer(renderer2D);
+			sys->AssignRenderer(std::make_shared<Renderer2D>(render) );
 		}
 		VX_CORE_INFO("ECS Initilation Complete");
 
-
-
-		
-
-
-		// TEST 
-		
-		ResourceManager::LoadTexture("C:/Development/Vox/Vox/Source/Core/Resource/awesomeface.png", "face", true);
 
 		
 	}
