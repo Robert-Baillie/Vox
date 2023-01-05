@@ -31,13 +31,12 @@ namespace Vox
 				SpriteRenderer& sr = *EntityComponentManager::GetManager()->GetComponent<SpriteRenderer>(ent);
 
 				if (renderer == nullptr) { VX_CORE_ERROR("RENDERER 2D NOT ASSIGNED"); }
-			
+				
 				renderer->DrawSprite(transform, sr); //  Should be assigned in App initialisation
 				
 				
-
+				
 			}
-
 		}
 
 	

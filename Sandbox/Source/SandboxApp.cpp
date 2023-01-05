@@ -4,6 +4,7 @@ class Sandbox : public Vox::Application
 {
 public:
 	Vox::Entity t;
+	Vox::Entity t2;
 
 	bool firstTime = true;
 	bool firstTime2 = true;
@@ -33,6 +34,12 @@ public:
 			t.GetComponent<Vox::Transform>()->Scale = glm::vec3(300.0f, 400.0f, 0.0f);
 			t.GetComponent<Vox::Transform>()->Rotation = glm::vec3(0, 0, 45.0);
 			
+			Vox::SpriteRenderer sr2 = Vox::SpriteRenderer("face2");
+			t2.AddComponent<Vox::SpriteRenderer>(sr2);
+
+			t2.GetComponent<Vox::Transform>()->Position = glm::vec3(-200.0f, 200.0f, 0.0f);
+			t2.GetComponent<Vox::Transform>()->Scale = glm::vec3(300.0f, 400.0f, 0.0f);
+			t2.GetComponent<Vox::Transform>()->Rotation = glm::vec3(0, 0, 45.0);
 			
 			firstTime = false;
 		}

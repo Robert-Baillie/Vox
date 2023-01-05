@@ -41,15 +41,17 @@ namespace Vox {
 
 	private:
 		// ECS
-		EntityComponentManager* entityComponentManager;
-		SystemManager* systemManager;
+		EntityComponentManager* entityComponentManager = nullptr;
+		SystemManager* systemManager = nullptr;
 
 		// Window Pointer
-		Window* mainWindow;
-		Input* input;
+		Window* mainWindow = nullptr;
+		Input* input = nullptr;
+		Renderer2D* spriteRenderer = nullptr;
+
 
 		// Renderer
-		ResourceManager* resources;
+		ResourceManager* resources = nullptr;
 		
 		// Singleton
 		static Application* instance;

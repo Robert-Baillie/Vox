@@ -68,7 +68,7 @@ namespace Vox{
 
 		// Key
 		glfwSetKeyCallback(window, keyCallback);
-
+		 
 		// Mouse
 		glfwSetMouseButtonCallback(window, mouseButtonCallback);
 		glfwSetScrollCallback(window, mouseScrollCallback);
@@ -85,11 +85,13 @@ namespace Vox{
 
 		// Enables
 		glEnable(GL_BLEND);
+	
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
 
 		// Viewport
 		glViewport(0, 0, bufferWidth, bufferHeight);
-
+	
 		// Assign the user pointer
 		glfwSetWindowUserPointer(window, this);
 

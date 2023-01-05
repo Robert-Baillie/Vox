@@ -22,6 +22,8 @@ namespace Vox {
 	{
 	public:
 		// Constructor - Initialises shaders
+		Renderer2D(); // Default
+
 		Renderer2D(Shader& shader);
 
 		// Deconstructor - Clears VAO
@@ -30,6 +32,8 @@ namespace Vox {
 		// Draw Sprite-> Renders a defined quad texure with given sTexture
 		// Default to a standard size/colour if not given
 		void DrawSprite(Transform& transform, SpriteRenderer& spriteRenderer);
+
+
 		
 	private:
 		// Render States - can it be a pointer
@@ -40,7 +44,6 @@ namespace Vox {
 		void initRenderData();
 
 
-		
 
 	};
 }

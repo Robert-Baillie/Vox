@@ -1,10 +1,10 @@
 #pragma once
 
-#ifndef TEXTURE
-#define TEXTURE
+
 #include "Core/Log.h"
 
 #include "glad/glad.h"
+#include "GLFW/glfw3.h"
 
 
 
@@ -41,10 +41,8 @@ namespace Vox {
 		 void Bind() ;
 
 
-		GLuint checkError(const char* context);
+		static GLuint CheckError(const char* context);
 
 	};
 
 }
-
-#endif

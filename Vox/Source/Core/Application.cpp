@@ -1,6 +1,9 @@
 #include "Application.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
+
+
+
 namespace Vox {
 	Application* Application::instance = nullptr;
 
@@ -10,6 +13,8 @@ namespace Vox {
 		if (instance) VX_CORE_ERROR("APP INSTANCE ALREADY EXISTS.");
 		instance = this;
 
+		//DWORD threadId = GetCurrentThreadId();
+		//VX_TRACE("Thread ID on Launch: {0}", threadId);
 
 		// Initiate Window
 		VX_CORE_INFO("Starting Window Initialisation");
@@ -17,6 +22,7 @@ namespace Vox {
 		mainWindow->Initialise();
 		VX_CORE_INFO("Window Initialisation Complete");
 
+	
 
 		// Initilise Input
 		VX_CORE_INFO("Starting Input Initialisation");
@@ -29,7 +35,6 @@ namespace Vox {
 		VX_CORE_INFO("Starting Resource Initialisation");
 		resources = new ResourceManager;
 		resources->Initialise();
-		// TEST
 
 		VX_CORE_INFO("Resource Initilation Complete");
 
@@ -46,7 +51,7 @@ namespace Vox {
 		resources->GetShader("SPRITE").SetMatrix4("projection", projection);
 
 		Shader spriteShader = resources->GetShader("SPRITE");
-		Renderer2D render = Renderer2D(spriteShader);
+		spriteRenderer = new Renderer2D(spriteShader);
 		VX_CORE_INFO("Renderer Initilation Complete");
 
 
@@ -62,7 +67,7 @@ namespace Vox {
 
 		// Update the Renderer on All
 		for (std::shared_ptr<System> sys : systemManager->GetSystemList()) {
-			sys->AssignRenderer(std::make_shared<Renderer2D>(render) );
+			sys->AssignRenderer(std::make_shared<Renderer2D>(*spriteRenderer) );
 		}
 		VX_CORE_INFO("ECS Initilation Complete");
 
@@ -98,8 +103,9 @@ namespace Vox {
 			// Render Changes
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
-
 			systemManager->Render();
+			
+
 
 			mainWindow->SwapBuffers();
 

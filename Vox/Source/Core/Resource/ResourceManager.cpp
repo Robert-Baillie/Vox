@@ -4,6 +4,10 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+
+
+
+
 namespace Vox {
 	ResourceManager* ResourceManager::instance = nullptr;
 
@@ -44,6 +48,7 @@ namespace Vox {
 
 		// Textures
 		LoadTexture("C:/Development/Vox/Vox/Source/Core/Resource/awesomeface.png", "face", false);
+		LoadTexture("C:/Development/Vox/Vox/Source/Core/Resource/awesomeface.png", "face2", false);
 		VX_CORE_INFO("Test Texture Loaded.");
 
 
@@ -56,6 +61,7 @@ namespace Vox {
 
 		instance->shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
 
+	
 		return instance->shaders[name];
 	}
 
@@ -66,7 +72,8 @@ namespace Vox {
 	Texture ResourceManager::LoadTexture(const char* filePath, std::string name, bool isAlpha)
 	{
 		instance->textures[name] = loadTextureFromFile(filePath, isAlpha);
-		VX_CORE_ERROR("HERE");
+
+
 		return instance->textures[name];
 	}
 
@@ -111,12 +118,15 @@ namespace Vox {
 
 		// Load image via stbi
 		int width, height, nrChannels;
-		unsigned char* texData = stbi_load(file, &width, &height, &nrChannels, 0); // May need STBI_rgb to be 0
+		unsigned char* texData = stbi_load(file, &width, &height, &nrChannels, STBI_rgb); // May need STBI_rgb to be 0
 		// Error check
+		
+
 		if (!texData)
 		{
 			VX_CORE_ERROR("Failed to find {0}", file);
 		}
+		 VX_TRACE("NrChannels: {0} ", nrChannels); // Returning 4 - I am setting no alpha
 
 		// Generate the texture
 		tex.Generate(width, height, texData);
