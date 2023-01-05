@@ -47,8 +47,7 @@ namespace Vox {
 		VX_CORE_INFO("Sprite Shader Loaded.");
 
 		// Textures
-		LoadTexture("C:/Development/Vox/Vox/Source/Core/Resource/awesomeface.png", "face", false);
-		LoadTexture("C:/Development/Vox/Vox/Source/Core/Resource/awesomeface.png", "face2", false);
+		LoadTexture("C:/Development/Vox/Vox/Source/Core/Resource/awesomeface.png", "face", true);
 		VX_CORE_INFO("Test Texture Loaded.");
 
 
@@ -118,7 +117,7 @@ namespace Vox {
 
 		// Load image via stbi
 		int width, height, nrChannels;
-		unsigned char* texData = stbi_load(file, &width, &height, &nrChannels, STBI_rgb); // May need STBI_rgb to be 0
+		unsigned char* texData = stbi_load(file, &width, &height, &nrChannels, 0); // May need STBI_rgb to be 0
 		// Error check
 		
 
@@ -126,7 +125,7 @@ namespace Vox {
 		{
 			VX_CORE_ERROR("Failed to find {0}", file);
 		}
-		 VX_TRACE("NrChannels: {0} ", nrChannels); // Returning 4 - I am setting no alpha
+		
 
 		// Generate the texture
 		tex.Generate(width, height, texData);

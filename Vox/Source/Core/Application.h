@@ -58,7 +58,7 @@ namespace Vox {
 
 		// Helpers
 		// FPS
-		void printFrameCount();
+		void printInfo();
 		double lastTime;
 		int nbFrames;
 

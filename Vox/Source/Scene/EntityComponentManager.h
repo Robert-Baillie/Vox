@@ -85,6 +85,9 @@ namespace Vox {
 			return instance->typeMap.GetTypeID<T>();
 		}
 
+
+
+		int GetEntityCount() {return entityCount;}
 	private:
 		// Storage
 		int entityCount = 0;
@@ -131,6 +134,8 @@ namespace Vox {
 
 		// Singleton (Again...)
 		static EntityComponentManager* instance;
+
+
 	};
 
 

@@ -24,6 +24,8 @@ namespace Vox {
 
 	void Renderer2D::DrawSprite(Transform& transform, SpriteRenderer& spriteRenderer)
 	{
+		// TO IMPLEMENT - BATCHING (Currenlty having a draw call per sprite)
+		
 		// Set the uniform model and colour
 
 		this->shader.Use();
